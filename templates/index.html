@@ -1,7 +1,7 @@
- <html>
+<html>
     <head>
         <title>ReciPic</title>
-        <link rel="stylesheet" href="../static/styles.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
     </head>
     <body>
@@ -11,13 +11,13 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#">Search</a></li>
-                    <li><a href="generaterecipe.html">Generate Recipe</a></li>
+                    <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
                     <li><a href="#">Chatbot</a></li>
                     <li><a href="#">Profile</a></li>
                 </ul>
             </div>
             <div class="home-content">
-                <h1>SCAN AND FIND RECIPIES</h1>
+                <h1>SCAN AND FIND RECIPES</h1>
                 <p>Tired of staring at your pantry wondering what to cook? 
                    <br>Snap a photo of your ingredients, hit submit, and get a custom recipe instantly. 
                    <br>It's that simple!

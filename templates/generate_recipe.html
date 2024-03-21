@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>ReciPic</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </head>
+    <body>
+        
+        <div class="banner">
+            <div class="navbar">
+                <p class="logo"> ReciPic </p>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Search</a></li>
+                    <li><a href="generate_recipe.html">Generate Recipe</a></li>
+
+                    <li><a href="#">Chatbot</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Saved Recipes</a></li>
+                </ul>
+            </div>
+
+            <div class="home-content">
+                <h1>Follow these easy steps!</h1>
+                <p>Upload a photo of the ingredients you have on hand, 
+                <br>and get suggestions for recipes based on those ingredients.
+                <br>Use filters to accommodate various dietary preferences and restrictions.
+                <br>Discover delicious recipes with ReciPic now!
+                </p>
+                <div>
+                    <div>
+                        <button type="button" onclick="document.getElementById('file-input').click()"><span></span>Upload Image</button>
+                    <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="uploadImage(event)">
+                    </div>
+                </div>
+            <div id="recipe-container"></div>
+            </div>
+        </div>
+
+    </body>
+</html>
+
