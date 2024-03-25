@@ -5,14 +5,14 @@
         <script src="{{ url_for('static', filename='script.js') }}"></script>
     </head>
     <body>
-        
+    </body>
         <div class="banner">
             <div class="navbar">
                 <p class="logo"> ReciPic </p>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{ url_for('index') }}">Home</a></li>
                     <li><a href="#">Search</a></li>
-                    <li><a href="generate_recipe.html">Generate Recipe</a></li>
+                    <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
 
                     <li><a href="#">Chatbot</a></li>
                     <li><a href="#">Profile</a></li>
