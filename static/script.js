@@ -1,3 +1,18 @@
+// Include jQuery library
+
+const extras = [];
+$('.filter-btn').on('change', function() {
+  const category = $(this).attr('name');
+  const buttonId = $(this).attr('id');
+  extras[category] = buttonId;
+  console.log(extras);
+});
+
+$('.btn-filter').on('click', function() {
+  $(this).addClass('active').siblings().removeClass('active');
+});
+
+
 function uploadImage(event) {
   const file = event.target.files[0];
   const formData = new FormData();
@@ -17,28 +32,44 @@ function uploadImage(event) {
         ).innerHTML = `<h1>${response.error}</h1>`;
       } else {
         const recipeHTML = `
-      <h2>${response.name}</h2>
-      <h3>Ingredients</h3>
-      <ul>
-        ${response.ingredients
-          .map((ingredient) => `<li>${ingredient}</li>`)
-          .join("")}
-      </ul>
-      <h3>Preparation</h3>
-      <ol>
-        ${response.preparation.map((step) => `<li>${step}</li>`).join("")}
-      </ol>
-      <h3>Serving</h3>
-      <ul>
-      ${response.serving.map((suggestion) => `<li>${suggestion}</li>`).join("")}
-      </ul>
-      <h3>Notes</h3>
-      <ul>
-        ${response.notes.map((note) => `<li>${note}</li>`).join("")}
-      </ul>
-    `;
+        <div class="container">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">${response.name}</h2>
+            <h3 class="my-3">Ingredients</h3>
+            <ul class="list-group">
+              ${response.ingredients.map(ingredient => `
+                <li class="list-group-item">${ingredient}</li>
+              `).join('')}
+            </ul>
+            <h3 class="my-3">Preparation</h3>
+            <ol class="list-group list-group-numbered">
+              ${response.preparation.map(step => `
+                <li class="list-group-item">${step}</li>
+              `).join('')}
+            </ol>
+            <h3 class="my-3">Serving</h3>
+            <ul class="list-group">
+              ${response.serving.map(suggestion => `
+                <li class="list-group-item">${suggestion}</li>
+              `).join('')}
+            </ul>
+            <h3 class="my-3">Notes</h3>
+            <ul class="list-group">
+              ${response.notes.map(note => `
+                <li class="list-group-item">${note}</li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+`;
+
 
         document.getElementById("recipe-container").innerHTML = recipeHTML;
+        document.getElementById('home-content').style.display = 'None';
+        document.getElementById('filter-card').style.display = 'None';
+        
       }
     })
     .catch((error) => {

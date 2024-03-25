@@ -6,49 +6,108 @@
     <title>ReciPic</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="ml-auto navbar-nav">
-                <a class="nav-link nav-item" href="#">Search</a>
-                <a class="nav-link nav-item" href="{{ url_for('generate_recipe') }}">Generate Recipe</a>
-                <a class="nav-link nav-item" href="#">Chatbot</a>
-                <a class="nav-link nav-item" href="#">Profile</a>
-                <a class="nav-link nav-item" href="#">Saved Recipes</a>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+              aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarToggle">
+                <div class="ml-auto navbar-nav">
+                    <a class="nav-link nav-item" href="#">Search</a>
+                    <a class="nav-link nav-item" href="{{ url_for('generate_recipe') }}">Generate Recipe</a>
+                    <a class="nav-link nav-item" href="#">Chatbot</a>
+                    <a class="nav-link nav-item" href="#">Profile</a>
+                    <a class="nav-link nav-item" href="#">Saved Recipes</a>
+                </div>
             </div>
         </div>
-    </div>
-        </div>
-    </nav>
-    <div class="main">
-            <div class="home-content">
-                <h1>Follow these easy steps!</h1>
-                <p>Upload a photo of the ingredients you have on hand,
-                <br>and get suggestions for recipes based on those ingredients.
-                <br>Use filters to accommodate various dietary preferences and restrictions.
-                <br>Discover delicious recipes with ReciPic now!
-                </p>
-                <div>
-                    <div>
-                        <button type="button" class="button" onclick="document.getElementById('file-input').click()"><span class='span'></span>Upload Image</button>
-                    <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="uploadImage(event)">
+            </div>
+        </nav>
+        <div class="main">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6" id="filter-card">
+                        <div class="card rounded-3">
+                          <div class="card-header">
+                            <h2>Filters</h2>
+                          </div>
+                          <div class="card-body">
+                            <div class="row">
+                              <div class="col">
+                                <h3>Cuisine</h3>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="indian" name="cuisine" class="filter-btn"> Indian
+                                  </label>
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="chinese" name="cuisine" class="filter-btn"> Chinese
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3>Diet</h3>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="veg" name="diet" class="filter-btn"> Veg
+                                  </label>
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="non-veg" name="diet" class="filter-btn"> Non-Veg
+                                  </label>
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="dairy-free" name="diet" class="filter-btn"> Dairy-free
+                                  </label>
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="jain" name="diet" class="filter-btn"> Jain
+                                  </label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <h3>Course</h3>
+                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="dessert" name="course" class="filter-btn"> Dessert
+                                  </label>
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="snack" name="course" class="filter-btn"> Snack
+                                  </label>
+                                  <label class="btn btn-filter rounded-pill">
+                                    <input type="radio" id="main-course" name="course" class="filter-btn"> Main course
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6" id="home-content">
+                        <div class="home-content">
+                            <h1>Follow these easy steps!</h1>
+                            <p>Upload a photo of the ingredients you have on hand,
+                            <br>and get suggestions for recipes based on those ingredients.
+                            <br>Use filters to accommodate various dietary preferences and restrictions.
+                            <br>Discover delicious recipes with ReciPic now!
+                            </p>
+                            <div>
+                                <div>
+                                    <button type="button" class="button" onclick="document.getElementById('file-input').click()"><span class='span'></span>Upload Image</button>
+                                <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="uploadImage(event)">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div id="recipe-container">         
             </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
