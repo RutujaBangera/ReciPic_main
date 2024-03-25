@@ -1,42 +1,54 @@
-<html>
-    <head>
-        <title>ReciPic</title>
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-        <script src="{{ url_for('static', filename='script.js') }}"></script>
-    </head>
-    <body>
-    </body>
-        <div class="banner">
-            <div class="navbar">
-                <p class="logo"> ReciPic </p>
-                <ul>
-                    <li><a href="{{ url_for('index') }}">Home</a></li>
-                    <li><a href="#">Search</a></li>
-                    <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
-
-                    <li><a href="#">Chatbot</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Saved Recipes</a></li>
-                </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReciPic</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="ml-auto navbar-nav">
+                <a class="nav-link nav-item" href="#">Search</a>
+                <a class="nav-link nav-item" href="{{ url_for('generate_recipe') }}">Generate Recipe</a>
+                <a class="nav-link nav-item" href="#">Chatbot</a>
+                <a class="nav-link nav-item" href="#">Profile</a>
+                <a class="nav-link nav-item" href="#">Saved Recipes</a>
             </div>
-
+        </div>
+    </div>
+        </div>
+    </nav>
+    <div class="main">
             <div class="home-content">
                 <h1>Follow these easy steps!</h1>
-                <p>Upload a photo of the ingredients you have on hand, 
+                <p>Upload a photo of the ingredients you have on hand,
                 <br>and get suggestions for recipes based on those ingredients.
                 <br>Use filters to accommodate various dietary preferences and restrictions.
                 <br>Discover delicious recipes with ReciPic now!
                 </p>
                 <div>
                     <div>
-                        <button type="button" onclick="document.getElementById('file-input').click()"><span></span>Upload Image</button>
+                        <button type="button" class="button" onclick="document.getElementById('file-input').click()"><span class='span'></span>Upload Image</button>
                     <input type="file" id="file-input" style="display: none;" accept="image/*" onchange="uploadImage(event)">
                     </div>
                 </div>
-            <div id="recipe-container"></div>
             </div>
-        </div>
+            <div id="recipe-container">         
+            </div>
+    </div>
 
-    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
 </html>
-

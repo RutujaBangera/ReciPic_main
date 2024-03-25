@@ -6,33 +6,31 @@ from PIL import Image
 from io import BytesIO
 import google.generativeai as genai
 from flask_cors import CORS
+import json
 
 prompt = """
-You are a highly capable AI assistant with advanced computer vision capabilities. Your task is to analyze an image and identify all the ingredients present in the image. Once you have identified the ingredients, you will generate a recipe using only those ingredients.
-Return html for the following
-Here are the steps you should follow:
+Task: Generate a complete recipe from an image containing various food ingredients. The recipe should utilize all identified ingredients and provide detailed instructions for preparation and cooking.
 
-1. Analyze the image carefully and identify all the ingredients present. Make a list of the ingredients.
+Input: <image>
 
-2. If you are unsure about any items in the image, list them separately and indicate your uncertainty.
+Instructions:
+1. Analyze the input image to identify and extract all food ingredients present.
+2. Generate a list of ingredients with quantities required for the recipe.
+3. Create step-by-step preparation instructions for the dish.
+4. Provide detailed cooking instructions, including temperatures and cooking times if applicable.
+5. Suggest appropriate serving recommendations to enhance the dish.
+6. Consider any dietary restrictions or preferences based on the ingredients and provide modifications if needed.
+7. Address any potential challenges or limitations in creating the recipe from the given ingredients.
+8. Output the full recipe in JSON format with the following sections:
+    name : <name of the recipe> - string
+    ingredients: <list ingredients with quantities> - array of strings
+    preparation: <steps for preparation> - array of strings
+    serving: <serving suggestion> - array of strings
+    notes: <any additional notes, substitutions, challenges, etc.> - array of strings
 
-3. Once you have the list of ingredients, generate a recipe that uses only those ingredients. The recipe should be clear, concise, and easy to follow.
-
-4. If there are any uncommon or specialized ingredients in the list, provide a brief explanation or description of those ingredients.
-
-5. The recipe should include the following sections:
-   - Ingredients list (with quantities)
-   - Preparation instructions (step-by-step)
-   - Cooking instructions
-   - Serving suggestions (if applicable)
-
-6. If there are any dietary restrictions or preferences that can be accommodated based on the ingredients, mention them and provide alternatives or modifications where possible.
-
-7. Provide a name or title for the recipe that accurately represents the dish.
-
-8. If there are any potential challenges or limitations in creating a recipe with the given ingredients, mention them and suggest possible solutions or alternatives.
-
-Remember, your goal is to create a delicious and practical recipe using only the ingredients identified from the image. Be creative, but also ensure that the recipe is realistic and easy to follow for someone with basic cooking skills.
+Be creative in generating an appealing and practical recipe while ensuring it remains realistic based on the identified ingredients.
+If it is not an image of ingredients, output {error:"Not an image of ingredients!"}
+Output: <recipe in JSON format>
 """
 
 app = Flask(__name__)
@@ -53,6 +51,7 @@ def index():
 def generate_recipe():
     return render_template('generate_recipe.html')
 @app.route('/gen', methods=['POST'])
+
 def gen():
     if 'image' not in request.files:
         return jsonify({'error': 'Missing image data'}), 400
@@ -64,9 +63,24 @@ def gen():
     res = gemini.generate_content([prompt, image_pil])
     res.resolve()
 
-    recipe = res.text.replace('\n', '')
+    recipe = res.text
+    # Find the first '{' and the last '}' in the response
+    first_brace_index = recipe.find('{')
+    last_brace_index = recipe.rfind('}')
+    
+    if first_brace_index == -1 or last_brace_index == -1:
+        return jsonify({'error': 'Invalid recipe format'}), 400
 
-    return jsonify({'res': recipe})
+    # Extract the JSON string from the response
+    json_string = recipe[first_brace_index:last_brace_index+1]
+
+    try:
+        # Convert the JSON string to a JSON object
+        recipe_json = json.loads(json_string)
+    except json.JSONDecodeError:
+        return jsonify({'error': 'Failed to parse recipe JSON'}), 400
+    
+    return jsonify(recipe_json)
 
 if __name__ == '__main__':
     app.run(debug=True)
