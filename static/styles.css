@@ -160,28 +160,6 @@ body {
     margin-top: 150px;
 }
 
-.sidebar h2{
-    font-weight: 500;
-    color: white;
-    margin-bottom: 15px;
-}
-
-.filter{
-    display: flex;
-    align-items: center;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.filter p{
-    font-weight: bold;
-}
-
-.filter input{
-    cursor: pointer;
-    margin-right: 15px;
-}
-
 .home-content {
     text-align: center;
     color: white;

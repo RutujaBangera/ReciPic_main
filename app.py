@@ -8,7 +8,7 @@ import google.generativeai as genai
 from flask_cors import CORS
 import json
 
-prompt = """
+sysprompt = """
 Task: Generate a complete recipe from an image containing various food ingredients. The recipe should utilize all identified ingredients and provide detailed instructions for preparation and cooking.
 
 Input: <image>
@@ -31,6 +31,8 @@ Instructions:
 Be creative in generating an appealing and practical recipe while ensuring it remains realistic based on the identified ingredients.
 If it is not an image of ingredients, output {error:"Not an image of ingredients!"}
 Output: <recipe in JSON format>
+
+keep these extra instructions in mind and choose a recipe from the given cuisine,type and diet accordingly (if any) : 
 """
 
 app = Flask(__name__)
@@ -55,7 +57,11 @@ def generate_recipe():
 def gen():
     if 'image' not in request.files:
         return jsonify({'error': 'Missing image data'}), 400
-
+    if request.form.get('extras'):
+        prompt = sysprompt + request.form.get('extras').replace('{','').replace('}','').replace('"','')
+        print(prompt)
+    else:
+        prompt = sysprompt
     image_file = request.files['image']
     image_bytes = image_file.read()
     image_pil = Image.open(BytesIO(image_bytes))

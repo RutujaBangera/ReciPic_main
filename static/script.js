@@ -1,15 +1,22 @@
 // Include jQuery library
-
-const extras = [];
-$('.filter-btn').on('change', function() {
-  const category = $(this).attr('name');
-  const buttonId = $(this).attr('id');
-  extras[category] = buttonId;
-  console.log(extras);
-});
-
+extras = {}
 $('.btn-filter').on('click', function() {
-  $(this).addClass('active').siblings().removeClass('active');
+  const category = $(this).find('input').attr('name');
+  const buttonId = $(this).find('input').attr('id');
+
+  // If the button is active, remove its property from extras
+  if ($(this).hasClass('active')) {
+    console.log('active');
+    $(this).removeClass('active');
+    delete extras[category];
+  } else {
+    console.log('inactive');
+    // If the button is inactive, add its property to extras
+    extras[category] = buttonId;
+    $(this).addClass('active').siblings().removeClass('active');
+  }
+
+  console.log(extras);
 });
 
 
@@ -17,7 +24,7 @@ function uploadImage(event) {
   const file = event.target.files[0];
   const formData = new FormData();
   formData.append("image", file);
-  formData.append("extras",extras)
+  formData.append("extras", JSON.stringify(extras));
   document.getElementById('loading-gif').style.display = 'flex'
   // Replace the following URL with the server endpoint to handle image upload
   fetch("/gen", {
