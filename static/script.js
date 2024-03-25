@@ -17,8 +17,8 @@ function uploadImage(event) {
   const file = event.target.files[0];
   const formData = new FormData();
   formData.append("image", file);
-  document.getElementById("recipe-container").innerHTML =
-    '<h3 style="color:white;">Generating...</h3>';
+  formData.append("extras",extras)
+  document.getElementById('loading-gif').style.display = 'flex'
   // Replace the following URL with the server endpoint to handle image upload
   fetch("/gen", {
     method: "POST",
@@ -26,6 +26,7 @@ function uploadImage(event) {
   })
     .then((response) => response.json())
     .then((response) => {
+      document.getElementById('loading-gif').style.display = 'None'
       if (response.error) {
         document.getElementById(
           "recipe-container"
