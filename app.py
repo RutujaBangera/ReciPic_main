@@ -80,10 +80,13 @@ def gen():
 
     # Extract the JSON string from the response
     json_string = recipe[first_brace_index:last_brace_index+1]
-
+    
     try:
         # Convert the JSON string to a JSON object
         recipe_json = json.loads(json_string)
+        if recipe_json['error']:
+                return jsonify(recipe_json), 400
+        
         videosSearch = VideosSearch(recipe_json['name'], limit = 1)
         recipe_json['youtube_video'] = videosSearch.result()['result'][0]['link'].replace('watch?v=','embed/')
     except json.JSONDecodeError:
