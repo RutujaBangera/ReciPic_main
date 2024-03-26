@@ -7,6 +7,8 @@ from io import BytesIO
 import google.generativeai as genai
 from flask_cors import CORS
 import json
+from youtubesearchpython import VideosSearch
+
 
 sysprompt = """
 Task: Generate a complete recipe from an image containing various food ingredients. The recipe should utilize all identified ingredients and provide detailed instructions for preparation and cooking.
@@ -59,7 +61,6 @@ def gen():
         return jsonify({'error': 'Missing image data'}), 400
     if request.form.get('extras'):
         prompt = sysprompt + request.form.get('extras').replace('{','').replace('}','').replace('"','')
-        print(prompt)
     else:
         prompt = sysprompt
     image_file = request.files['image']
@@ -83,6 +84,8 @@ def gen():
     try:
         # Convert the JSON string to a JSON object
         recipe_json = json.loads(json_string)
+        videosSearch = VideosSearch(recipe_json['name'], limit = 1)
+        recipe_json['youtube_video'] = videosSearch.result()['result'][0]['link'].replace('watch?v=','embed/')
     except json.JSONDecodeError:
         return jsonify({'error': 'Failed to parse recipe JSON'}), 400
     

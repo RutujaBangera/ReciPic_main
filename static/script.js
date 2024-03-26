@@ -68,7 +68,8 @@ function uploadImage(event) {
                 <li class="list-group-item">${note}</li>
               `).join('')}
             </ul>
-          </div>
+            <h3 class="my-3">Youtube Video</h3>
+            <iframe src="${response.youtube_video}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-100" style="min-height: 400px;"></iframe>          </div>
         </div>
       </div>
 `;
