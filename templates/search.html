@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReciPic</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="ml-auto navbar-nav">
+                <a class="nav-link nav-item" href="{{ url_for('search') }}">Search</a>
+                <a class="nav-link nav-item" href="{{ url_for('generate_recipe') }}">Generate Recipe</a>
+                <a class="nav-link nav-item" href="#">Chatbot</a>
+                <a class="nav-link nav-item" href="#">Profile</a>
+                <a class="nav-link nav-item" href="#">Saved Recipes</a>
+            </div>
+        </div>
+    </div>
+        </div>
+    </nav>
+<div class="main">
+    <div class="home-content">
+        <div class="search-container">
+            <h1>Search for a Recipe</h1>
+            <form action="" class="search-bar">
+                <input type="text" placeholder="Search Recipies" name="q" autocomplete="off">
+                <!-- <button type="submit"></button> -->
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

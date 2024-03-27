@@ -17,8 +17,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="ml-auto navbar-nav">
-                <a class="nav-link nav-item" href="#">Login</a>
-                <a class="nav-link nav-item" href="{{ url_for('generate_recipe') }}">SignUp</a>
+                <a class="nav-link nav-item" href="#" onclick="openPopup()">Login</a>
+                <a class="nav-link nav-item" href="#" onclick="openPopup()">SignUp</a>
             </div>
         </div>
     </div>
@@ -36,6 +36,29 @@
                 <button class="button" type="button"><span class="span"></span>Try It!</button>
             </a>
         </div>
+        
+
+<div class="popup" id="popup">
+    <h2>Create an Account</h2>
+    <p>Welcome!Register for an account</p>
+    
+    <form action="" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" placeholder="Enter your Username">
+    <label for="email">E - Mail:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email address">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="Enter your Password">
+    <label for="c_password">Confirm Password:</label>
+    <input type="password" id="c_password" name="password" placeholder="Confirm your Password">
+    <div class="wrap"> 
+        <button type="button" onclick="closePopup()"> 
+          Register
+          </button> 
+    </div> 
+
+</div>
+
     </div>
 </div>
 
@@ -45,3 +68,5 @@
 <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+
+

@@ -51,6 +51,11 @@ gemini = genai.GenerativeModel('gemini-pro-vision')
 def index():
     return render_template('index.html')
 
+@app.route('/search')
+def search():
+    return render_template('search.html')
+
+
 @app.route('/generate_recipe')
 def generate_recipe():
     return render_template('generate_recipe.html')

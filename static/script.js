@@ -1,4 +1,10 @@
-// Include jQuery library
+let popup = document.getElementById("popup");
+function openPopup(){
+    popup.classList.add("open-popup");
+}
+function closePopup(){
+    popup.classList.remove("open-popup");
+}
 extras = {}
 $('.btn-filter').on('click', function() {
   const category = $(this).find('input').attr('name');
@@ -73,6 +79,9 @@ function uploadImage(event) {
         </div>
       </div>
 `;
+
+
+
 
 
         document.getElementById("recipe-container").innerHTML = recipeHTML;
