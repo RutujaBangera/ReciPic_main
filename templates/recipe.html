@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReciPic</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
+            aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="ml-auto navbar-nav">
+                <a class="nav-link nav-item" href="#" onclick="openPopup()">Login</a>
+                <a class="nav-link nav-item" href="#" onclick="openPopup()">SignUp</a>
+            </div>
+        </div>
+    </div>
+</div>
+</nav>
+<div class="main">
+<div class="main">
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Chicken Tikka Masala</h2>
+                <h3 class="my-3">Ingredients</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Boneless chicken thighs, cubed</li>
+                    <li class="list-group-item">Yogurt</li>
+                    <li class="list-group-item">Garlic, minced</li>
+                    <li class="list-group-item">Ginger, grated</li>
+                    <li class="list-group-item">Garam masala</li>
+                    <li class="list-group-item">Cumin</li>
+                    <li class="list-group-item">Paprika</li>
+                    <li class="list-group-item">Salt</li>
+                    <li class="list-group-item">Tomato sauce</li>
+                    <li class="list-group-item">Heavy cream</li>
+                    <li class="list-group-item">Cilantro, chopped</li>
+                </ul>
+                <h3 class="my-3">Preparation</h3>
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item">Marinate the chicken in yogurt, garlic, ginger, garam masala, cumin, paprika, and salt.</li>
+                    <li class="list-group-item">Grill or broil the chicken until cooked through.</li>
+                    <li class="list-group-item">In a saucepan, combine the tomato sauce and heavy cream. Simmer until thickened.</li>
+                    <li class="list-group-item">Add the grilled chicken to the sauce and simmer for 10 minutes.</li>
+                    <li class="list-group-item">Garnish with chopped cilantro.</li>
+                </ol>
+                <h3 class="my-3">Serving</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Serve with basmati rice</li>
+                    <li class="list-group-item">Naan bread</li>
+                    <li class="list-group-item">Sliced onions and lime wedges</li>
+                </ul>
+                <h3 class="my-3">Notes</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">Adjust spice levels to your preference</li>
+                    <li class="list-group-item">Can use boneless, skinless chicken breasts instead of thighs</li>
+                </ul>
+                <h3 class="my-3">Youtube Video</h3>
+                <iframe src="https://www.youtube.com/embed/5-y_qZWmKXk" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-100" style="min-height: 400px;"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
