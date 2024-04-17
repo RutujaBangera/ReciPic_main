@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+
+    <title>ReciPic</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <p>ReciPic</p>
+                </div>
+                <ul>
+                    <div class="button">
+                        <i class="fas fa-times close"></i>
+                    </div>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="search.html">Search</a></li>
+                    <li><a href="#">Generate Recipe</a></li>
+                    <li><a href="recipes.html">Recipes</a></li>
+                    <li><a href="#">Profile</a></li>
+                </ul>
+                <div class="button">
+                    <i class="fas fa-bars menu"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="slide-container swiper" >
+            <div class="slide-content swiper-wrapper">
+                <div class="overlay swiper-slide">
+                    <img src="./img/show3.jpg" alt="">
+                    <div class="img-overlay">
+                        <p>Unlock Your Culinary Creativity with</p>
+                        <h2>ReciPic</h2><br><br>
+                        <button type="button" onclick="document.location='recipes.html'" class="primary-btn">Try now</button>
+                    </div>
+                </div>
+                <div class="overlay swiper-slide">
+                    <img src="./img/show2.jpg" alt="">
+                    <div class="img-overlay">
+                        <p>From Pantry to Palate</p>
+                        <h2>Discover <span> Delicious Dishes</span></h2>
+                        <p>in Seconds</p> <br><br>
+                        <button type="button" onclick="document.location='recipes.html'" class="primary-btn">Try now</button>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js"></script> <script src="js/index.js"></script>
+</body>
+</html>

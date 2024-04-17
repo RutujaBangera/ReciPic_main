@@ -89,10 +89,10 @@ def gen():
     try:
         # Convert the JSON string to a JSON object
         recipe_json = json.loads(json_string)
-        if recipe_json['error']:
+        if 'error' in recipe_json.keys():
                 return jsonify(recipe_json), 400
         
-        videosSearch = VideosSearch(recipe_json['name'], limit = 1)
+        videosSearch = VideosSearch(recipe_json['name'] + ' recipe', limit = 1)
         recipe_json['youtube_video'] = videosSearch.result()['result'][0]['link'].replace('watch?v=','embed/')
     except json.JSONDecodeError:
         return jsonify({'error': 'Failed to parse recipe JSON'}), 400
