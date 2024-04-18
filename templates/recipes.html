@@ -4,35 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='new_styles.css') }}">
+
     <title>ReciPic</title>
 </head>
 <body>
     <header>
         <div class="container">
-            <nav>
-                <div class="logo">
-                    <p>ReciPic</p>
-                </div>
-                <ul>
-                    <div class="button">
-                        <i class="fas fa-times close"></i>
-                    </div>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="search.html">Search</a></li>
-                    <li><a href="#">Generate Recipe</a></li>
-                    <li><a href="#">Recipes</a></li>
-                    <li><a href="#">Profile</a></li>
-                </ul>
-                <div class="button">
-                    <i class="fas fa-bars menu"></i>
-                </div>
-            </nav>
+          <nav>
+            <div class="logo"><p>ReciPic</p></div>
+            <ul>
+              <div class="menu-button"><i class="fas fa-times close"></i></div>
+              <li><a href="{{ url_for('index') }}">Home</a></li>
+              <li><a href="{{ url_for('search') }}">Search</a></li>
+              <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
+              <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+              <li><a href="#">Profile</a></li>
+            </ul>
+            <div class="menu-button"><i class="fas fa-bars menu"></i></div>
+          </nav>
         </div>
-    </header>
+      </header>
 
     <section id="explore">
         <div class="container">
@@ -42,7 +36,7 @@
             <div class="choose-wrapper">
               <div class="img-left-side">
                 <div class="lg-img">
-                    <img src="./img/food1.jpg" alt="">
+                    <img src="./static/assets/food1.jpg" alt="">
                     <div class="img-content">
                     <h2>Maldives Tours</h2>
                     <div class="hidden-content">
@@ -58,7 +52,7 @@
               </div>
               <div class="img-right-side">
                 <div class="lg-img">
-                    <img src="./img/food2.jpg" alt="">
+                    <img src="./static/assets/food2.jpg" alt="">
                     <div class="img-content">
                     <h2>Italy Tours</h2>
                     <div class="hidden-content">
@@ -76,7 +70,7 @@
 
             <div class="row-wise-img">
                 <div class="lg-img">
-                    <img src="./img/food3.jpg" alt="">
+                    <img src="./static/assets/food3.jpg" alt="">
                     <div class="img-content">
                     <h2>France Tours</h2>
                     <div class="hidden-content">
@@ -90,7 +84,7 @@
                     </div>
                 </div>
                 <div class="lg-img">
-                    <img src="./img/food4.jpg" alt="">
+                    <img src="./static/assets/food4.jpg" alt="">
                     <div class="img-content">
                     <h2>Greece Tours</h2>
                     <div class="hidden-content">
@@ -104,7 +98,7 @@
                     </div>
                 </div>
                 <div class="lg-img">
-                    <img src="./img/food5.jpg" alt="">
+                    <img src="./static/assets/food5.jpg" alt="">
                     <div class="img-content">
                     <h2>Japan Tours</h2>
                     <div class="hidden-content">
@@ -118,7 +112,7 @@
                     </div>
                 </div>
                 <div class="lg-img">
-                    <img src="./img/food6.jpg" alt="">
+                    <img src="./static/assets/food6.jpg" alt="">
                     <div class="img-content">
                     <h2>Austria Tours</h2>
                     <div class="hidden-content">

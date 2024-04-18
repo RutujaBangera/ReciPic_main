@@ -4,40 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReciPic</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='new_styles.css') }}"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+  />
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-          aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="ml-auto navbar-nav">
-                <a class="nav-link nav-item" href="{{ url_for('search') }}">Search</a>
-                <a class="nav-link nav-item" href="{{ url_for('generate_recipe') }}">Generate Recipe</a>
-                <a class="nav-link nav-item" href="#">Chatbot</a>
-                <a class="nav-link nav-item" href="#">Profile</a>
-                <a class="nav-link nav-item" href="#">Saved Recipes</a>
-            </div>
-        </div>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo"><p>ReciPic</p></div>
+        <ul>
+          <div class="menu-button"><i class="fas fa-times close"></i></div>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('search') }}">Search</a></li>
+          <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
+          <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+        <div class="menu-button"><i class="fas fa-bars menu"></i></div>
+      </nav>
     </div>
+  </header>
+
+      <main>
+        <div class="search">
+            <p>Unlock Flavor with Words: Discover Your Next Culinary Masterpiece</p>
+            <h2>Search for Recipes</h2>
+            <input type="text" name="searchbar" id="searchbar" placeholder="Search for Recipes here "><br>
+            <br><button class="primary-btn">Search</button>
         </div>
-    </nav>
-<div class="main">
-    <div class="home-content">
-        <div class="search-container">
-            <h1>Search for a Recipe</h1>
-            <form action="" class="search-bar">
-                <input type="text" placeholder="Search Recipies" name="q" autocomplete="off">
-                <!-- <button type="submit"></button> -->
-            </form>
-        </div>
-    </div>
-</div>
+    </main>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

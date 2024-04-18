@@ -1,70 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='new_styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <title>ReciPic</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-</head>
-<body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url_for('index') }}">ReciPic</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle"
-            aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="ml-auto navbar-nav">
-                <a class="nav-link nav-item" href="#" onclick="openPopup()">Login</a>
-                <a class="nav-link nav-item" href="#" onclick="openPopup()">SignUp</a>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo"><p>ReciPic</p></div>
+          <ul>
+            <div class="menu-button"><i class="fas fa-times close"></i></div>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('search') }}">Search</a></li>
+            <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
+            <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
+            <li><a href="#">Profile</a></li>
+          </ul>
+          <div class="menu-button"><i class="fas fa-bars menu"></i></div>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <div class="slide-container swiper">
+        <div class="slide-content swiper-wrapper">
+          <div class="overlay swiper-slide">
+            <img
+              src="{{ url_for('static', filename='assets/show3.jpg') }}"
+              alt=""
+            />
+            <div class="img-overlay">
+              <p>Unlock Your Culinary Creativity with</p>
+              <h2>ReciPic</h2>
+              <br /><br />
+              <a href="{{ url_for('generate_recipe') }}">
+                <button
+                  type="button"
+                  class="primary-btn"
+                >
+                  Try now
+                </button>
+              </a>
             </div>
-        </div>
-    </div>
-</div>
-</nav>
-<div class="main">
-    <div class="home-content">
-        <h1>SCAN AND GET RECIPES</h1>
-        <p>Tired of staring at your pantry wondering what to cook? 
-            <br>Snap a photo of your ingredients, hit submit, and get a custom recipe instantly. 
-            <br>It's that simple!
-        </p>
-        <div>
+          </div>
+          <div class="overlay swiper-slide">
+            <img
+              src="{{ url_for('static', filename='assets/show2.jpg') }}"
+              alt=""
+            />
+            <div class="img-overlay">
+              <p>From Pantry to Palate</p>
+              <h2>Discover <span> Delicious Dishes</span></h2>
+              <p>in Seconds</p>
+              <br /><br />
             <a href="{{ url_for('generate_recipe') }}">
-                <button class="button" type="button"><span class="span"></span>Try It!</button>
+              <button
+                type="button"
+                class="primary-btn"
+              >
+                Try now
+              </button>
             </a>
+            </div>
+          </div>
         </div>
-        
-
-<div class="popup" id="popup">
-    <h2>Create an Account</h2>
-    <p>Welcome!Register for an account</p>
-    
-    <form action="" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" placeholder="Enter your Username">
-    <label for="email">E - Mail:</label>
-    <input type="email" id="email" name="email" placeholder="Enter your email address">
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder="Enter your Password">
-    <label for="c_password">Confirm Password:</label>
-    <input type="password" id="c_password" name="password" placeholder="Confirm your Password">
-    <div class="wrap"> 
-        <button type="button" onclick="closePopup()"> 
-          Register
-          </button> 
-    </div> 
-
-</div>
-
-    </div>
-</div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='script.js') }}"></script>
-</body>
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('static', filename='swiper.js') }}"></script>
+  </body>
 </html>
