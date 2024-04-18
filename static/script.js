@@ -46,43 +46,30 @@ function uploadImage(event) {
         ).innerHTML = `<h1>${response.error}</h1>`;
       } else {
         const recipeHTML = `
-        <div class="container">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title">${response.name}</h2>
-            <h3 class="my-3">Ingredients</h3>
-            <ul class="list-group">
-              ${response.ingredients.map(ingredient => `
-                <li class="list-group-item">${ingredient}</li>
-              `).join('')}
-            </ul>
-            <h3 class="my-3">Preparation</h3>
-            <ol class="list-group list-group-numbered">
-              ${response.preparation.map(step => `
-                <li class="list-group-item">${step}</li>
-              `).join('')}
-            </ol>
-            <h3 class="my-3">Serving</h3>
-            <ul class="list-group">
-              ${response.serving.map(suggestion => `
-                <li class="list-group-item">${suggestion}</li>
-              `).join('')}
-            </ul>
-            <h3 class="my-3">Notes</h3>
-            <ul class="list-group">
-              ${response.notes.map(note => `
-                <li class="list-group-item">${note}</li>
-              `).join('')}
-            </ul>
-            <h3 class="my-3">Youtube Video</h3>
-            <iframe src="${response.youtube_video}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-100" style="min-height: 400px;"></iframe>          </div>
+<div class="container">
+  <div class="card mb-4">
+    <div class="card-body">
+      <h5 class="card-title">Identified Ingredients</h5>
+      <ul>
+        ${response.ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
+      </ul>
+    </div>
+  </div>
+  ${response.recipes.map(recipe => `
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">${recipe.name}</h5>
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="${recipe.youtube_video}" allowfullscreen></iframe>
         </div>
       </div>
+    </div>
+  `).join('')}
+</div>
 `;
 
 
-
-
+        
 
         document.getElementById("recipe-container").innerHTML = recipeHTML;
         document.getElementById('home-content').style.display = 'None';

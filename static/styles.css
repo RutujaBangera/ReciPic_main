@@ -29,7 +29,7 @@ body {
     background-attachment: fixed;
 }
 .main {
-    padding: 100px;
+    padding: 50px;
     overflow-y: auto;
     position: relative;
     display: flex;
