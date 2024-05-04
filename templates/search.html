@@ -36,13 +36,14 @@
         }
 
         .recipe-card .btn-primary {
-            background-color: #FF6F61;
-            border-color: #FF6F61;
+            background-color: #a3a0a0;
+            border-color: #000000;
+            color: black;
         }
 
         .recipe-card .btn-primary:hover {
-            background-color: #FF4C3B;
-            border-color: #FF4C3B;
+            background-color: #e2dada;
+            border-color: #000000;
         }
 
     </style>
@@ -58,7 +59,6 @@
                     <li><a href="{{ url_for('search') }}">Search</a></li>
                     <li><a href="{{ url_for('generate_recipe') }}">Generate Recipe</a></li>
                     <li><a href="{{ url_for('recipes') }}">Recipes</a></li>
-                    <li><a href="#">Profile</a></li>
                 </ul>
                 <div class="menu-button"><i class="fas fa-bars menu"></i></div>
             </nav>
@@ -67,8 +67,7 @@
     <main>
         <div class="search">
             <p>Unlock Flavor with Words: Discover Your Next Culinary Masterpiece</p>
-            <h2>Search for Recipes</h2>
-            <input type="text" name="searchbar" id="searchbar" placeholder="Search for Recipes here "><br>
+            <input type="text" name="searchbar" id="searchbar" placeholder="Search for Recipes here ">
             <br><button class="primary-btn" onclick="searchRecipes()">Search</button>
         </div>
         <div class="recipe-container row justify-content-center">
@@ -91,7 +90,7 @@
                     recipeContainer.innerHTML = ''; // Clear previous results
 
                     // Display the top 3 results in card format
-                    for (let i = 0; i < Math.min(recipes.length, 3); i++) {
+                    for (let i = 0; i < Math.min(recipes.length, 4); i++) {
                         const recipe = recipes[i].recipe;
                         const card = document.createElement('div');
                         card.classList.add('recipe-card', 'col-md-4','mx-2', 'mb-4');

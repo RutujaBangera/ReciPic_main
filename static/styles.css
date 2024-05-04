@@ -125,16 +125,16 @@ body {
     margin: 20px 10px;
     border-radius: 25px;
     font-weight: bold;
-    border: 2px solid #009688;
+    border: 2px solid #acb0af;
     background: transparent;
-    color: white;
+    color: rgb(254, 251, 251);
     cursor: pointer;
     position: relative;
     overflow: hidden;
 }
 
 .span{
-    background: #009688;
+    background: #7b7c7c;
     height: 100%;
     width: 0;
     border-radius: 25px;
@@ -147,9 +147,11 @@ body {
 
 .button:hover span{
     width: 100%;
+    color: black;
 }
 .button:hover{
     border: none;
+    color: black;
 }
 
 .sidebar{
@@ -222,10 +224,12 @@ body {
     transition: background-color 0.3s, color 0.3s;
   }
   .btn-filter:hover {
-    background-color: #007bff; /* Darker shade of blue on hover */
+    background-color: #a1abb6; /* Darker shade of blue on hover */
+    color: black;
   }
   .btn-filter.active {
-    background-color: #007bff; /* Darker shade of blue when selected */
+    background-color: #a1abb6; /* Darker shade of blue on hover */
+    color: black;
   }
   .btn-filter.rounded-pill {
     border-radius: 20px;
