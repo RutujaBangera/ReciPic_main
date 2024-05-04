@@ -37,18 +37,22 @@ CORS(app)
 def extract_json(sentence):
     bindex = sentence.index('model')
     sliced_string = sentence[bindex+5:]
-    sliced_string = sliced_string[sliced_string.index('{') : (sliced_string.rfind('}') + 1)]
+    if sliced_string[sliced_string.rfind('<eos>')-1] == '}':
+        sliced_string = sliced_string[sliced_string.index('{') : (sliced_string.rfind('}')) + 1]
+    else :
+        sliced_string = sliced_string[sliced_string.index('{'):sliced_string.rfind('<eos>')] + '}]}'
+    print(sliced_string)
     return sliced_string.replace('\n','')
 
 def get_recipe(image, instructions=""):
     enc_image = dream_model.encode_image(image)
-    dream_out = dream_model.answer_question(enc_image, "are there any food ingredients in this image if yes, list them and describe them", dream_tokenizer)
+    dream_out = dream_model.answer_question(enc_image, "Analyze the image, are there any food ingredients in this image if yes, list them including the names of fruits, vegetables, spices, meat, if they exist and describe them", dream_tokenizer)
     prompt = f"""
    <bos><start_of_turn>user
     {dream_out}
 From the above information about food ingredients, analyze the ingredients and suggest 3 recipes with descriptions for beginners that we can make with only these ingredients and nothing else.
 Keep in mind these extra instructions: {instructions}
-Return your response in the following JSON format and ensure that the json is structured and terminated properly :
+Return your response in the following JSON format:
 
 {{
     "ingredients": [
@@ -78,12 +82,13 @@ Return your response in the following JSON format and ensure that the json is st
         }}
     ]
 }}
+** ensuring that the json is structured and terminated properly is extremely important **
 <end_of_turn>
 <start_of_turn>model
 """
 
     input_ids = gemma_tokenizer(prompt, return_tensors="pt").to("cuda")
-    outputs = gemma_model.generate(**input_ids, max_new_tokens=1000)
+    outputs = gemma_model.generate(**input_ids, max_new_tokens=2000)
     outputs = gemma_tokenizer.decode(outputs[0])
     print(outputs)
     jsonout = extract_json(sentence=outputs)

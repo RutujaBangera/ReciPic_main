@@ -33,7 +33,7 @@ function uploadImage(event) {
   formData.append("extras", JSON.stringify(extras));
   document.getElementById('loading-gif').style.display = 'flex'
   // Replace the following URL with the server endpoint to handle image upload
-  fetch("https://fa8f-52-203-132-137.ngrok-free.app/gen", {
+  fetch("/gen", {
     method: "POST",
     body: formData,
   })
